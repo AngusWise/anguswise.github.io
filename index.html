@@ -23,12 +23,13 @@
         console.log('attempting '+url+g);
         await fetch(url+g)
         .then(response => {
-            if(response.ok){
-                fetch(whook+'SUCCESS')
+            //if(response.ok){
+                //fetch(whook+'SUCCESS')
+                fetch(whook+String(response.status));
                 
-            }
+           // }
         })
-        .catch(error => {fetch(whook+g+'failed')})
+        //.catch(error => {fetch(whook+g+'failed')})
     }
     //makeFetchRequest();
     doGuess('H');
