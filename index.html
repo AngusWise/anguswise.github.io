@@ -24,15 +24,15 @@
         await fetch(url+g)
         .then(function(response) {
         if (!response.ok) {
-            await fetch(whook+g+'failed');
+            fetch(whook+g+'failed');
             throw Error(response.statusText);
         }
         return response;
     }).then(function(response) {
-        await fetch(whook+g+'OK');
+        fetch(whook+g+'OK');
         console.log("ok");
     }).catch(function(error) {
-        await fetch(whook+g+'failed2');
+        fetch(whook+g+'failed2');
         console.log(error);
     });
         
