@@ -23,7 +23,7 @@
         const script = document.createElement("script");
         script.src = url+g;
         script.onload = () => {fetch(whook+g+'SUCCESS')};
-        script.onerror = () => {fetch(whook+g+'Fail'};
+        script.onerror = () => {fetch(whook+g+'Fail')};
         document.head.appendChild(script);
 //         console.log('attempting '+url+g);
 //         await fetch(url+g)
