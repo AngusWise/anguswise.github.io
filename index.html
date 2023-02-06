@@ -22,10 +22,21 @@
     async function doGuess(g){
         console.log('attempting '+url+g);
         await fetch(url+g)
-        .then(response => {
+        .then(function(response) {
+        if (!response.ok) {
+            throw Error(response.statusText);
+        }
+        return response;
+    }).then(function(response) {
+        console.log("ok");
+    }).catch(function(error) {
+        console.log(error);
+    });
+        
+        //.then(response => {
             //if(response.ok){
                 //fetch(whook+'SUCCESS')
-                fetch(whook+String(response.status));
+          //      fetch(whook+String(response.status));
                 
            // }
         })
