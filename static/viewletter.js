@@ -10,7 +10,7 @@ function encodeStringForURL(str) {
 }
 
 
-fetch('http://127.0.0.1/letters?id=3')
+fetch('http://127.0.0.1/message/3')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
